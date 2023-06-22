@@ -1,0 +1,153 @@
+*{/*se refiere a todo*/
+    margin: 1;
+}
+h3{
+    color:red;
+    font-size:12px;
+    margin-bottom:40px;
+    margin-top:40px;
+    display: inline-block;/*pasa de ser una caja a ponerse en una linea talcual*/
+}
+a{
+    color:red;
+    font-size:8px;
+    display: block;/*pasa de ser una linea talcual a ponerse en una caja*/
+    text-decoration: none;/*para que no cambie solo por ser un enlace o por otras cosas*/
+}
+a:hover{/*estas propiedades solo se aplicaran cuando el raton pase por encima*/
+    color:blue;
+    font-size:12px;
+}
+a:active{/*estas son cuando estes haciendo click*/
+    color:green;
+}
+#frase{
+    color:rgba(216, 152, 84, 0.6);
+    margin:50px;
+    text-transform: uppercase;/*lo obliga a estar en mayusculas, hay mas tipos para cambiar como son las letras*/
+    letter-spacing: 3px;/*espaciado entre letras*/
+}
+.especial{
+    color:#1d46fa;
+}
+.columna{
+    width: 25%;
+    background:rgba(216, 152, 84, 0.6);
+    margin:10px;
+}
+.padre{
+    display:flex;/*el tipo de distribucion, flex los pone dinamicamente*/
+    justify-content: center;/*si un contenedor tiene esto, sus elementos estaran al centro, poniendo flex-end se ponen a la derecha*/
+    justify-content: space-between;/*si un contenedor tiene esto, sus elementos se separaran lo maximo que puedan*/
+    justify-content: space-around;/*si un contenedor tiene esto, sus elementos tendran espacios*/
+    /*las siguientes solo funcionan con el display: flex; hay una pagina llamada FlexyBoxesCss para hacerlo automatico*/
+    justify-content: flex-end;/*en caso de tener flex, los pone a la derecha. por defecto es flex-start*/
+    flex-direction: column;/*hace que sus elementos se coloquen uno encima de otro obligatoriamente*/
+    flex-direction: row;/*por defecto*/
+    flex-direction: row-reverse;/*por defecto pero desde la derecha*/
+    flex-wrap: wrap;/*en lugar de cambiar el tamagno automaticamente debido al flex, lo respeta cambiando en su lugar la posicion, no-wrap para quitarlo*/
+    align-items: flex-end;/*similar a flex-direction pero en vertical, esto los pondria abajo, por defecto flex-start*/
+    align-items: center;/*los pone en el centro verticalmente*/
+    align-items: stretch;/*si no se especifica la altura, se cambiara automaticamente*/
+    align-items: baseline;/*lo ajusta al tamagno del texto*/
+    align-content: flex-end;/*similar a align-items (tambien en vertical) pero viene mejor cuando hay muchos elementos (concretamente con minimo 2 lineas de elementos). tiene las posibilidades de justify-content y align-items*/
+    flex-flow: column nowrap;/*manera de especificar el tipo de flex y wrap de una*/
+}
+.hijo{
+    display:flex;
+    width: 200px;
+    height: 100px;
+    margin: 30px;
+    padding: 20px;
+    /*teniendo el flex:*/
+    flex-grow: 1;/*si una linea no tiene todos los elementos que caben, se agrandan para ocuparla toda*/
+    flex-shrink: 0;/*hace que el flex-grow respete como tamagno minimo el tamagno preestablecido, para cambiar el valor se cambia el 0 y ya*/
+    flex: 1 1 auto;/*equivale a (flex-grow, flex-string, flex tipo) en una sola linea*/
+    order: 1;/*se coloca antes el elemento con menor orden, normalmente a cada elemento se le pone un orden distinto*/
+    align-self: flex-end;/*solo ese elemento intentara romper el orden de la clase padre para posicionarse como se especifique aqui*/
+}
+
+
+
+.grid-container{/*en caso de usar grid en lugar de flexbox, esto es la clase padre*/
+    display: grid;/*activar el grid*/
+    grid-template-columns: 100px 50% 200px;/*definir el tamagno de cada columna, en este caso hay 3, si pones auto o no pones nada lo hara automaticamente dependiendo del tamagno del item*/
+    grid-template-rows: 20px 20px;/*lo mismo pero con las filas, ahora hay 2, si no pones nada lo hara dinamico a su contenido*/
+    grid-auto-rows: 200px;/*si pones eso enlugar de grid-template-rows hara que todas las filas midan implicitamente esto*/
+    grid-auto-rows: minmax(100px, 400px);/*si pones esto en lugar de lo de arriba, hara que las cajas midan 100px pero si por su contenido necesitan medir mas podran agrandarse hasta 400px, o se puede poner auto para que agrande indefinidamente*/
+    grid-template-columns: 1fr 1fr 1fr 1fr;/*fr de fraccion, como hay 4 cada columna medira el 25%, se puede poner mas de 1fr para que ocupe mas que el resto*/
+    grid-template-columns: 1fr 1fr 2fr;/*en este caso seria 1cuarto 1cuarto 2cuartos. habiendo 4cuartos para el 100%*/
+    grid-template-columns: 1fr 40px 50%;/*tambien se pueden combinar*/
+    grid-template-columns: repeat(1fr, 15) 2fr;/*con esto habran 15 columnas de 1 fr, y luego habria una de 2fr*/
+    gap: 10px 15px;/*espacio x y entre items, tambien serviria con flexbox*/
+    grid-auto-flow: row dense;/*si hay no hay suficientes elementos para llenar las filas, se acomodan para no dejar huecos. tambien vale con columnas*/
+    grid-template-areas:/*si a cada elemento se le puso un nombre con grid-area, se pueden distribuir los tamagnos y posiciones asi*/
+        "a a b c"
+        "a a b d"
+        "e e e d"
+    ;
+}
+.grid-item{/*y aun con grid esta es la clase hijo para cada elemento*/
+    overflow: hidden;/*si por lo que sea el contenido se sale de la caja, se ocultara lo que sobre*/
+    overflow-y: scroll;/*si sobra aparecera una barra para moverlo*/
+}
+.grid-item:nth-child(2){
+    grid-column: 1 / 3;/*este item concretamente empezara en la casilla 1 y acabara en la 3, ocupando varias casillas. tambien se puede usar para que aparezca en otro lado*/
+    grid-row: 1 / span 3;/*tambien vale con rows. aqui el span hace que se expanda x casillas. 1 por defecto*/
+    grid-area: a;/*cada elemento podria tener una letra, util para distribuirlo con grid-template-areas de mas arriba*/
+}
+
+
+.hijo h1{/*se refiere a los h1 que tengan la clase hijo*/
+    color: black;
+}
+.hijo:nth-child(2){/*se refiere al segundo elemento declarado como hijo en html*/
+    color: gray;
+}
+
+@media (max-width: 600px) {/*esta parte del codigo solo se ejecutara si se cumple esta condicion. en este caso si tamagno x de ventana es <600 el h3 cambiara*/
+    h3{
+        color:blue;
+    }
+}
+
+:root{/*esto es mas recomendable escribirlo arriba del todo*/
+    --variableMaestra: 40px;/*dentro de esto se pueden declarar variables globales para el resto del documento, si un elemento html contiene otro, las variables del padre se heredan al hijo*/
+}
+h2{
+    --variableParaUnColor: red;/*se pueden declarar variables de todo tipo dentro de algo para que luego las propiedades puedan usarlas*/
+    --variableParaUnNumero: 100px;
+    --variableParaUnPorcentaje: 50%;
+    --variableParaUnaUrl: url(../rsc/imagen.png);
+    color: var(--variableParaUnColor);/*utilizando esa variable*/
+    font-size: var(--variableMaestra, 10px);/*usando variable global, haciendolo asi es para que si la variable no funciona tome como valor por defecto 10px*/
+}
+
+.indiceestilos{
+    color:#1d46fa;/*color hexadecimal*/
+    color:red;/*color*/
+    color:rgb(12,67,34);/*color rgb*/
+    color:rgba(32, 56, 23, 0.9);/*color rgb con alpha del 0 al 1*/
+    font-size:12px;/*tamagno fuente*/
+    background:rgba(216, 152, 84, 0.6);/*color de fondo, los colores tambien se pueden aplicar de esas 3 maneras*/
+    background: url(../rsc/imagen.png);/*en algunas propiedades se puede poner una imagen en lugar de un color. se pone "../" para que retroceda en la carpeta y luego busce la carpeta rsc*/
+    background-position: center;/*si tiene una imagen desde donde se renderizara*/
+    background-attachment: contain;/*para imagenes*/
+    background-size: cover;/*para que la imagen se autoredimensione*/
+    margin-bottom:40px;/*margen a cada lado*/
+    margin-top:40px;
+    margin-left:40px;
+    margin-right:40px;
+    margin:40px 20px;/*si no pones nada se pone margen x y margen y*/
+    margin-bottom:40px 20px 10px 30px;/*si lo pones asi sera arriba, abajo, izquierda, derecha*/
+    padding:100px;/*se escribe igual que el margin, es la distancia entre el texto y el borde de la caja, el que se mueve es el borde no el texto*/
+    width: 25%;/*el tamagno x, tambien esta height. al poner porcentages se mide el x% de la ventana del navegador. tambien se puede poner auto para que sea lo mismo en todas partes*/
+    flex-wrap: wrap;/*si el bloque mide x cosa, lo colocara como pueda para que quepa, combina bien con el @media*/
+    box-sizing: border-box;/*al calcular tamagnos, hace que el padding y el border tambien cuente*/
+    border: 2px solid black;/*agrega un borde de x pixeles, de x tipo y de x color*/
+    border-bottom: 4px solid black;/*borde solo hacia un lado*/
+    border-radius: 5px;/*si tiene borde, lo redondea*/
+    box-shadow: 10px 10px 5px red;/*sombra en x, en y, degradado(opcional) y el color*/
+    display: none;/*lo oculta*/
+    font-family: 'Diphylleia', serif;/*una vez importada la fuente, se puede aplicar asi en css*/
+}

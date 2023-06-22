@@ -1,0 +1,71 @@
+<!--asi son los comentarios-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>titulo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet"><!--fuente sacada de google fonts-->
+    <link rel="stylesheet" href="css/estilos.css"><!--esto es para enlacar otros archivos, asi se elnaza el stylesheet css de la otra carpeta-->
+    <style></style><!--lo que haya aqui dentro equivaldria a un .css enlazado-->
+    escribiendo en el header (procurar no hacerlo)
+    
+</head>
+<body>
+    <header>
+        en esta seccion aparecera todo arriba <span> todo normal</span><!--span no cambia nada, se usa en css para cambiar cosas en textos y demas-->
+    </header>
+    <main>
+        para cosas mas complejas se suele poner todo el contenido aqui dentro excepto el header
+    </main>
+    <nav>
+        en esta seccion sera el navegador, usualemente usado para enlaces
+    </nav>
+    <section>
+        esto es literalmente una seccion, se suelen poner varias, de base todas funcionan igual pero se suelen configurar con css
+    </section>
+    <aside>
+        esto se pone en el lado derecho
+    </aside>
+    <article>
+        esto es para hacer varios cuadros
+    </article>
+    <p>etiqueta p, cualquier cosa puede estar dentro de otra etiqueta</p>
+    <h1>etiqueta h1, mejor que sea unica</h1>
+    <h2>etiqueta h2 <p> esto es p dentro de h2</p> <p>los p permiten saltos de linea</p></h2>
+    <h3>etiqueta h3</h3>
+    <h4>etiqueta h4<b> b</b><strong> strong</strong><i> i</i><em> em</em><mark> mark</mark><small> small</small><del> del</del><ins> ins</ins><sub> sub</sub><sup> sup</sup></h4>
+    <h5 style="color:aqua">etiqueta h5 con css empotrado</h5><!--dentro de las comillas style equivale a css pero aplicado solo a esa etiqueta-->
+    <h6 id="frase">etiqueta h6 id frase</h6><!--al ponerle un id te puedes referir concretamente a el desde el .css-->
+    <h6 class="especial">etiqueta h6 class especial</h6><!--lo mismo que el id pero esta mas preparado para que varias etiquetas lleven la misma clase, el id es mas singular, se usa el espacio para que hayan varias clases en un solo elemento-->
+    <a href="about:blank">enlace</a>
+    <hr><!--solo una linea-->
+    <div>
+        <h1>esto esta en un div</h1>
+    </div>
+    <img src="rsc/imagen.png" alt="si no va la imagen, esto lo reemplaza, se debe poner la ruta relativa al index o desde el disco duro">
+    <ul>
+        <li>elemento de la lista</li>
+        <li>elemento</li>
+        <li>elemento</li>
+    </ul>
+    <ol>
+        <li>elemento de la lista numeral</li>
+        <li>elemento</li>
+        <li>elemento</li>
+    </ol>
+    <section class="padre"><!--para hacer columnas se pone la parte en section con clase padre y cada columna en un p con una clase-->
+        <p class="columna">contenido primera columna</p>
+        <p class="columna">contenido segunda columna</p>
+        <p class="columna">contenido tercera columna</p>
+    </section>
+    <button onclick="Funcion()">boton</button><!--lo de onclick haria que la funcion esa se ejecute en javascript, en este caso la funcion esta escrita aqui mismo y no hace falta especificar nada mas-->
+
+    <script>
+        function Funcion(){
+            console.log('holaaaaaa');
+        }
+    </script><!--lo que haya aqui dentro sera igual que programar en javascript-->
+</body>
+</html>
